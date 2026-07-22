@@ -12,17 +12,10 @@ const columns = [
 ]
 
 function getApiRoot() {
-  const configuredCodespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
-  if (configuredCodespaceName) {
-    return `https://${configuredCodespaceName}-8000.app.github.dev/api`
-  }
-
-  const hostMatch = window.location.hostname.match(/^(.+)-\d+\.app\.github\.dev$/i)
-  if (hostMatch) {
-    return `https://${hostMatch[1]}-8000.app.github.dev/api`
-  }
-
-  return '/api'
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
+  return codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api`
+    : '/api'
 }
 
 function normalizeCollection(payload) {
