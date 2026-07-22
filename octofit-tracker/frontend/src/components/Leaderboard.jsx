@@ -1,16 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 
-function getApiBaseUrl() {
+function getCodespaceName() {
   const envCodespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
   const inferredCodespaceName =
     typeof window !== 'undefined'
       ? window.location.hostname.match(/^(.*)-\d+\.app\.github\.dev$/)?.[1] || ''
       : ''
-  const codespaceName = envCodespaceName || inferredCodespaceName
-
-  return codespaceName
-    ? `https://${codespaceName}-8000.app.github.dev/api`
-    : 'http://localhost:8000/api'
+  return envCodespaceName || inferredCodespaceName
 }
 
 function normalizeItems(payload) {
@@ -50,7 +46,12 @@ export default function Leaderboard() {
   const [meta, setMeta] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const endpoint = useMemo(() => `${getApiBaseUrl()}/leaderboard/`, [])
+  const endpoint = useMemo(() => {
+    const codespaceName = getCodespaceName()
+    return codespaceName
+      ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/`
+      : 'http://localhost:8000/api/leaderboard/'
+  }, [])
 
   useEffect(() => {
     let isMounted = true
