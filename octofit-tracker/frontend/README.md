@@ -28,5 +28,5 @@ This prevents invalid URLs such as `https://undefined-8000.app.github.dev/...`.
 
 ```bash
 npm install
-npm run dev 
+npm run dev
 ```
