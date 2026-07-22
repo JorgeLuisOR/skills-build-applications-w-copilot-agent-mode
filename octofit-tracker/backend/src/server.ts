@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import './config/database.js';
-import { PORT, getApiBaseUrl } from './config/environment.js';
+import { PORT } from './config/environment.js';
 import { User } from './models/User.js';
 import { Team } from './models/Team.js';
 import { Activity } from './models/Activity.js';
@@ -10,6 +10,11 @@ import { LeaderboardEntry } from './models/LeaderboardEntry.js';
 import { Workout } from './models/Workout.js';
 
 dotenv.config();
+
+const codespaceName = process.env.CODESPACE_NAME;
+const apiBaseUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev`
+  : 'http://localhost:8000';
 
 const app = express();
 
@@ -21,7 +26,7 @@ app.get('/api/health', async (_req, res) => {
   res.json({
     status: 'ok',
     service: 'octofit-tracker-backend',
-    apiBaseUrl: getApiBaseUrl(),
+    apiBaseUrl,
     database: isDbConnected ? 'connected' : 'disconnected',
   });
 });
@@ -53,5 +58,5 @@ app.get(['/api/workouts', '/api/workouts/'], async (_req, res) => {
 
 app.listen(PORT, () => {
   console.log(`OctoFit Tracker backend listening on http://localhost:${PORT}`);
-  console.log(`API base URL: ${getApiBaseUrl()}`);
+  console.log(`API base URL: ${apiBaseUrl}`);
 });
