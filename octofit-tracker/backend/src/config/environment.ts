@@ -1,10 +1,10 @@
 export const PORT = Number(process.env.PORT ?? 8000);
 
-export const getApiBaseUrl = () => {
-  const codespaceName = process.env.CODESPACE_NAME;
+const codespaceDomain = process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN ?? 'app.github.dev';
 
-  if (codespaceName) {
-    return `https://${codespaceName}-8000.app.github.dev`;
+export const getApiBaseUrl = () => {
+  if (process.env.CODESPACE_NAME) {
+    return `https://${process.env.CODESPACE_NAME}-8000.${codespaceDomain}`;
   }
 
   return `http://localhost:${PORT}`;
