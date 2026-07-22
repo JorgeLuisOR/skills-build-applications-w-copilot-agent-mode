@@ -1,34 +1,16 @@
-# Octofit Tracker Frontend
+# React + Vite
 
-React 19 + Vite presentation tier for the Octofit Tracker application.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Environment variable
+Currently, two official plugins are available:
 
-Define `VITE_CODESPACE_NAME` in a local env file such as `.env.local`:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-```env
-VITE_CODESPACE_NAME=your-codespace-name
-```
+## React Compiler
 
-When set, the frontend calls API endpoints with this format:
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-```text
-https://${VITE_CODESPACE_NAME}-8000.app.github.dev/api/[component]/
-```
+## Expanding the Oxlint configuration
 
-Examples:
-
-- `https://${VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/`
-- `https://${VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
-- `https://${VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
-- `https://${VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
-- `https://${VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
-
-If `VITE_CODESPACE_NAME` is not set, the app safely falls back to relative routes (`/api/...`) to avoid invalid URLs like `https://undefined-8000...`.
-
-## Run
-
-```bash
-npm install --prefix octofit-tracker/frontend
-npm run dev --prefix octofit-tracker/frontend
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
