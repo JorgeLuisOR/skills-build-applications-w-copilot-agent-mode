@@ -10,7 +10,6 @@ mongoose
   })
   .catch((error) => {
     console.error('Error connecting to octofit_db:', error);
-    process.exit(1);
   });
 
 db.on('error', console.error.bind(console, 'connection error:'));
