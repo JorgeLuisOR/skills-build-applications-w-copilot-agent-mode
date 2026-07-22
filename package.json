@@ -1,0 +1,12 @@
+{
+  "name": "skills-build-applications-w-copilot-agent-mode",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix octofit-tracker/backend\" \"npm run dev --prefix octofit-tracker/frontend\"",
+    "dev:clean": "kill-port 8000 5173 && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "kill-port": "^2.0.1"
+  }
+}
