@@ -84,6 +84,12 @@ async function seedDatabase() {
         calories: 225,
         notes: 'Upper-body circuit',
       },
+      {
+        type: 'manga-maniacs',
+        description: 'Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).',
+        schedule: 'Tuesdays at 7pm',
+        maxAttendance: 15,
+      },
     ]);
 
     await LeaderboardEntry.insertMany([

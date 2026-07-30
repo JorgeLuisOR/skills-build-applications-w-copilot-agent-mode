@@ -112,13 +112,16 @@ export default function Activities() {
                   <th scope="col">User</th>
                   <th scope="col">Type</th>
                   <th scope="col">Duration</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Schedule</th>
+                  <th scope="col">Max Attendance</th>
                   <th scope="col">Date</th>
                 </tr>
               </thead>
               <tbody>
                 {items.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="text-center text-body-secondary">
+                    <td colSpan={8} className="text-center text-body-secondary">
                       No activities found.
                     </td>
                   </tr>
@@ -131,6 +134,9 @@ export default function Activities() {
                     </td>
                     <td>{activity.activityType || activity.type || 'n/a'}</td>
                     <td>{activity.durationMinutes ?? activity.duration ?? 'n/a'}</td>
+                    <td>{activity.description || 'n/a'}</td>
+                    <td>{activity.schedule || 'n/a'}</td>
+                    <td>{activity.maxAttendance ?? 'n/a'}</td>
                     <td>{activity.date ? new Date(activity.date).toLocaleString() : 'n/a'}</td>
                   </tr>
                 ))}
