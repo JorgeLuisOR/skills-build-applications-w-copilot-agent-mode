@@ -12,6 +12,13 @@ export const mockTeams = [
 export const mockActivities = [
   { id: 'activity-1', userId: 'user-1', type: 'run', durationMinutes: 35, calories: 280 },
   { id: 'activity-2', userId: 'user-2', type: 'cycling', durationMinutes: 45, calories: 320 },
+  {
+    id: 'activity-3',
+    type: 'manga-maniacs',
+    description: 'Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).',
+    schedule: 'Tuesdays at 7pm',
+    maxAttendance: 15,
+  },
 ];
 
 export const mockLeaderboard = [
